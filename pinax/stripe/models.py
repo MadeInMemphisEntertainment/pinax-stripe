@@ -412,7 +412,7 @@ class Invoice(StripeAccountFromCustomerMixin, StripeObject):
 
     customer = models.ForeignKey(Customer, related_name="invoices", on_delete=models.CASCADE)
     amount_due = models.DecimalField(decimal_places=2, max_digits=9)
-    attempted = models.BooleanField()
+    attempted = models.BooleanField(null=True)
     attempt_count = models.PositiveIntegerField(null=True, blank=True)
     charge = models.ForeignKey("Charge", null=True, blank=True, related_name="invoices", on_delete=models.CASCADE)
     subscription = models.ForeignKey(Subscription, null=True, blank=True, on_delete=models.CASCADE)
